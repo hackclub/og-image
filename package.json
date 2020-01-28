@@ -4,7 +4,7 @@
   "private": true,
   "description": "Generate Open Graph images for Hack Club Workshops",
   "engines": {
-    "node": "12.x"
+    "node": "10.x"
   },
   "scripts": {
     "build": "tsc -p api/tsconfig.json && tsc -p web/tsconfig.json"
