@@ -1,6 +1,5 @@
 {
   "name": "workshop-cards",
-  "regions": ["all"],
   "public": true,
   "version": 2,
   "routes": [{ "handle": "filesystem" }, { "src": "/(.+)", "dest": "/api" }]
