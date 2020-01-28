@@ -2,5 +2,10 @@
   "name": "workshop-cards",
   "public": true,
   "version": 2,
-  "routes": [{ "handle": "filesystem" }, { "src": "/(.+)", "dest": "/api" }]
+  "functions": {
+    "api/**": {
+      "memory": 3008
+    }
+  },
+  "rewrites": [{ "source": "/(.+)", "destination": "/api" }]
 }
