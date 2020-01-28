@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://hackclub.com/fonts/Phantom_Sans_0.4/Regular.woff')
+  src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Regular.woff')
       format('woff'),
-    url('https://hackclub.com/fonts/Phantom_Sans_0.4/Regular.woff2')
+    url('https://hackclub.com/fonts/Phantom_Sans_0.6/Regular.woff2')
       format('woff2');
   font-weight: normal;
   font-style: normal;
@@ -10,9 +10,9 @@
 }
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://hackclub.com/fonts/Phantom_Sans_0.4/Bold.woff')
+  src: url('https://hackclub.com/fonts/Phantom_Sans_0.6/Bold.woff')
       format('woff'),
-    url('https://hackclub.com/fonts/Phantom_Sans_0.4/Bold.woff2')
+    url('https://hackclub.com/fonts/Phantom_Sans_0.6/Bold.woff2')
       format('woff2');
   font-weight: bold;
   font-style: normal;
@@ -30,19 +30,19 @@ body {
 
 a {
   cursor: pointer;
-  color: #e42d42;
+  color: #ec3750;
   text-decoration: none;
   transition: all 0.2s ease;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid currentColor;
 }
 
+a:focus,
 a:hover {
-  border-bottom: 1px solid #e42d42;
+  border-bottom-width: 2px;
 }
 
 h1 {
   font-size: 3rem;
-  letter-spacing: -0.02em;
 }
 
 footer {
@@ -94,7 +94,6 @@ button {
   cursor: pointer;
   text-align: center;
   user-select: none;
-  font-weight: 100;
   position: relative;
   overflow: hidden;
   transition: border 0.2s, background 0.2s, color 0.2s ease-out;
@@ -289,8 +288,10 @@ img {
   margin-bottom: 50px;
   transition: all 0.2s ease;
   max-width: 100%;
+  line-height: 0;
 }
 
+.image-wrapper:focus,
 .image-wrapper:hover {
   box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
   border-color: #dde1e4;
@@ -342,5 +343,42 @@ img {
   }
   .github-corner .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000;
+    color: #eee;
+  }
+  button,
+  .input-outer-wrapper,
+  .select-wrapper {
+    background: #111;
+    border-color: #222;
+    color: inherit;
+  }
+  .input-inner-wrapper input,
+  select {
+    color: inherit;
+  }
+  button:hover,
+  .input-outer-wrapper:hover,
+  .select-wrapper:hover,
+  .select-arrow {
+    border-color: #222;
+    background: #222;
+    box-shadow: none;
+    color: inherit;
+  }
+  a {
+    color: #ff8c37;
+  }
+  .image-wrapper {
+    border-bottom: 0 !important;
+  }
+  .image-wrapper:focus,
+  .image-wrapper:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
   }
 }

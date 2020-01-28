@@ -1,7 +1,8 @@
 {
-  "name": "workshop-cards",
+  "name": "@hackclub/workshop-cards",
   "version": "1.0.0",
-  "description": "Generate Open Graph images for @lachlanjc/ima",
+  "private": true,
+  "description": "Generate Open Graph images for Hack Club Workshops",
   "engines": {
     "node": "12.x"
   },

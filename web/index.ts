@@ -137,7 +137,7 @@ const fileTypeOptions: DropdownOption[] = [
   { text: 'JPEG', value: 'jpeg' }
 ]
 
-const fontSizeOptions: DropdownOption[] = Array.from({ length: 10 })
+const fontSizeOptions: DropdownOption[] = Array.from({ length: 12 })
   .map((_, i) => i * 25)
   .filter(n => n > 0)
   .map(n => ({ text: n + 'px', value: n + 'px' }))
@@ -170,11 +170,11 @@ const App = (_: any, state: AppState, setState: SetState) => {
   }
   const {
     fileType = 'png',
-    fontSize = '200px',
+    fontSize = '250px',
     theme = 'light',
     md = true,
-    text = '**Hello** World',
-    caption = 'Demo',
+    text = 'Personal Website',
+    caption = 'By Hack Club Staff',
     images = [],
     showToast = false,
     messageToast = '',
