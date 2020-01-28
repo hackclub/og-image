@@ -1,15 +1,17 @@
-import * as marked from 'marked'
+import marked from 'marked'
 import { sanitizeHtml } from './sanitizer'
+import { ParsedRequest } from './types'
+const twemoji = require('twemoji')
+const twOptions = { folder: 'svg', ext: '.svg' }
+const emojify = (text: string) => twemoji.parse(text, twOptions)
 
 function getCss(theme: string, fontSize: string) {
   let background = '#ffffff'
-  // let foreground = '#e42d42'
   let radial = '#dde1e4'
 
   if (theme === 'dark') {
     background = '#17171d'
-    // foreground = '#ffffff'
-    radial = '#606e77'
+    radial = '#3c4858'
   }
 
   return `
@@ -126,19 +128,21 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-  const { text, author, theme, md, fontSize, images } = parsedReq
-  const username = (author || '').replace('@', '')
-  const avatar = username !== author && `https://github.com/${username}.png`
+  const { text, theme, md, fontSize, images, caption } = parsedReq
   return `<!DOCTYPE html>
-<html>
+  <html>
   <meta charset="utf-8">
   <title>Generated Image</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     ${getCss(theme, fontSize)}
   </style>
+  <link rel="stylesheet" href="http://assets.lachlanjc.me/bf566c6457ac/gotham.css" />
   <body>
-    <div class="brand">Hack Club <span class="subbrand">Workshops</span></div>
+    <div class="brand">
+      <img class="avatar" src="https://github.com/lachlanjc.png">
+      @lachlanjc @ <span class="nyu">IMA</span>
+    </div>
     <div class="spacer">
       ${
         images.length > 0
@@ -151,12 +155,12 @@ export function getHtml(parsedReq: ParsedRequest) {
         </div>`
           : ''
       }
-      <div class="heading">${md ? marked(text) : sanitizeHtml(text)}</div>
+      <div class="heading">${emojify(
+        md ? marked(text) : sanitizeHtml(text)
+      )}</div>
       ${
-        username.length > 0
-          ? `<div class="author">
-          By ${avatar ? `<img class="avatar" src="${avatar}">` : ''} ${username}
-        </div>`
+        caption !== 'undefined'
+          ? `<div class="caption">${emojify(sanitizeHtml(caption))}</div>`
           : ''
       }
     </div>

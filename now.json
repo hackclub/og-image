@@ -1,23 +1,7 @@
 {
-  "name": "hackclub-workshopcards",
-  "alias": "hackclub-workshopcards.now.sh",
-  "version": 2,
+  "name": "workshop-cards",
   "regions": ["all"],
   "public": true,
-  "builds": [
-    { "src": "public/*", "use": "@now/static" },
-    { "src": "package.json", "use": "@now/static-build" },
-    {
-      "src": "src/card.ts",
-      "use": "@now/node@canary",
-      "config": { "maxLambdaSize": "40mb" }
-    }
-  ],
-  "routes": [
-    { "src": "/", "dest": "/public/index.html" },
-    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
-    { "src": "/style.css", "dest": "/public/style.css" },
-    { "src": "/dist/browser.js", "dest": "/browser.js" },
-    { "src": "/(.+)", "dest": "/src/card.ts" }
-  ]
+  "version": 2,
+  "routes": [{ "handle": "filesystem" }, { "src": "/(.+)", "dest": "/api" }]
 }

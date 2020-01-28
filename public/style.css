@@ -37,11 +37,12 @@ a {
 }
 
 a:hover {
-  border-bottom: 1px solid #b52434;
+  border-bottom: 1px solid #e42d42;
 }
 
 h1 {
   font-size: 3rem;
+  letter-spacing: -0.02em;
 }
 
 footer {
@@ -67,7 +68,7 @@ h1 {
 }
 
 .pull-left {
-  min-width: 50%;
+  min-width: 40%;
   display: flex;
   justify-content: flex-end;
 }
@@ -213,13 +214,13 @@ select {
 }
 
 .field {
-  margin: 20px 80px;
+  margin: 1rem 5rem;
 }
 
 .field-label {
   display: inline-block;
-  width: 100px;
-  margin-right: 20px;
+  width: 8rem;
+  margin-right: 1rem;
   text-align: right;
 }
 
