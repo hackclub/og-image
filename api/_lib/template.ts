@@ -60,7 +60,7 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .img-wrapper {
-      margin: 100px 0 0;
+      margin: 50px 0 50px;
       padding-top: 75px;
       display: flex;
       align-items: center;
@@ -68,11 +68,11 @@ function getCss(theme: string, fontSize: string) {
       justify-content: center;
     }
 
-    .logo {
+    .img {
       width: 200px;
       height: 200px;
     }
-    .logo[src*="//github.com/"] {
+    .img[src*="//github.com/"] {
       border-radius: 75px;
       width: 150px;
       height: 150px;
@@ -111,6 +111,10 @@ function getCss(theme: string, fontSize: string) {
       font-weight: normal;
       margin-right: 0.2em;
     }
+    .logo {
+      width: 125px;
+      margin: 0 50px;
+    }
     
     .heading {
       background-image: linear-gradient(to bottom right, #ff8c37, #ec3750 66%);
@@ -134,12 +138,6 @@ function getCss(theme: string, fontSize: string) {
       letter-spacing: 0;
     }
     
-    .avatar {
-      width: 125px;
-      border-radius: 125px;
-      margin: 0 50px;
-    }
-    
     .emoji {
       height: 1em;
       width: 1em;
@@ -160,7 +158,7 @@ export function getHtml(parsedReq: ParsedRequest) {
   </style>
   <body>
     <div class="brand">
-      <img class="avatar" src="https://hackclub.com/icon/icon-unmasked.png">
+      <img class="logo" src="https://hackclub.com/icon/icon-masked.png">
       ${
         brand === 'undefined'
           ? `Hack Club`
@@ -171,10 +169,10 @@ export function getHtml(parsedReq: ParsedRequest) {
       ${
         images.length > 0
           ? `<div class="img-wrapper">
-              <img class="logo" src="${sanitizeHtml(images[0])}" />
+              <img class="img" src="${sanitizeHtml(images[0])}" />
               ${images.slice(1).map(img => {
                 return `<div class="plus">+</div>
-                <img class="logo" src="${sanitizeHtml(img)}" />`
+                <img class="img" src="${sanitizeHtml(img)}" />`
               })}
             </div>`
           : '<div class="spacer"></div>'
