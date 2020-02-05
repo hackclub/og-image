@@ -8,5 +8,6 @@ export interface ParsedRequest {
   theme: Theme
   md: boolean
   fontSize: string
+  brand: string
   images: string[]
 }

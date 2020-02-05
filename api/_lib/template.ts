@@ -69,14 +69,19 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .logo {
-      width: 225px;
-      height: 225px;
+      width: 200px;
+      height: 200px;
+    }
+    .logo[src*="//github.com/"] {
+      border-radius: 75px;
+      width: 150px;
+      height: 150px;
     }
 
     .plus {
       color: #7a8c97;
-      font-size: 100px;
-      padding: 0 50px;
+      font-size: 75px;
+      padding: 0 25px;
     }
 
     .container {
@@ -89,20 +94,22 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .brand {
-      font-size: 100px;
+      font-size: 105px;
       padding: 50px;
       text-align: center;
+      font-weight: bold;
       position: absolute;
       top: 0;
       width: 100%;
-      color: #7a8c97;
+      color: #ec3750;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .brand strong {
-      color: #ec3750;
-      margin-left: 0.2em;
+    .brand span {
+      color: #7a8c97;
+      font-weight: normal;
+      margin-right: 0.2em;
     }
     
     .heading {
@@ -142,7 +149,7 @@ function getCss(theme: string, fontSize: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-  const { text, theme, md, fontSize, images, caption } = parsedReq
+  const { text, theme, md, fontSize, brand, images, caption } = parsedReq
   return `<!DOCTYPE html>
   <html>
   <meta charset="utf-8">
@@ -154,18 +161,22 @@ export function getHtml(parsedReq: ParsedRequest) {
   <body>
     <div class="brand">
       <img class="avatar" src="https://hackclub.com/icon/icon-unmasked.png">
-      Hack Club <strong>Workshops</strong>
+      ${
+        brand === 'undefined'
+          ? `Hack Club`
+          : `<span>Hack Club</span> ${brand || 'Workshops'}`
+      }
     </div>
     <div class="container">
       ${
         images.length > 0
           ? `<div class="img-wrapper">
-          <img class="logo" src="${sanitizeHtml(images[0])}" />
-          ${images.slice(1).map(img => {
-            return `<div class="plus">+</div>
-            <img class="logo" src="${sanitizeHtml(img)}" />`
-          })}
-        </div>`
+              <img class="logo" src="${sanitizeHtml(images[0])}" />
+              ${images.slice(1).map(img => {
+                return `<div class="plus">+</div>
+                <img class="logo" src="${sanitizeHtml(img)}" />`
+              })}
+            </div>`
           : '<div class="spacer"></div>'
       }
       <div class="heading">${emojify(
