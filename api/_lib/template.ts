@@ -160,9 +160,9 @@ export function getHtml(parsedReq: ParsedRequest) {
     <div class="brand">
       <img class="logo" src="https://hackclub.com/icon/icon-masked.png">
       ${
-        brand === 'undefined'
-          ? `Hack Club`
-          : `<span>Hack Club</span> ${brand || 'Workshops'}`
+        brand.length > 0 && brand !== 'undefined'
+          ? `<span>Hack Club</span> ${brand || 'Workshops'}`
+          : `Hack Club`
       }
     </div>
     <div class="container">
