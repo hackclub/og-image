@@ -4,14 +4,26 @@ import { ParsedRequest } from './types'
 
 export function parseRequest(req: IncomingMessage) {
   console.log('HTTP ' + req.url)
-  const { pathname = '/', query = {} } = parse(req.url || '', true)
-  const { fontSize, images, theme, brand, md, caption } = query
+  const { pathname, query } = parse(req.url || '/', true)
+  const { fontSize, images, widths, heights, theme, md } = query || {}
 
   if (Array.isArray(fontSize)) {
     throw new Error('Expected a single fontSize')
   }
   if (Array.isArray(theme)) {
     throw new Error('Expected a single theme')
+  }
+
+  const arr = (pathname || '/').slice(1).split('.')
+  let extension = ''
+  let text = ''
+  if (arr.length === 0) {
+    text = ''
+  } else if (arr.length === 1) {
+    text = arr[0]
+  } else {
+    extension = arr.pop() as string
+    text = arr.join('.')
   }
 
   const arr = pathname.slice(1).split('.')

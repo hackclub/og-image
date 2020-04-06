@@ -1,3 +1,4 @@
+.now
 node_modules
 public/dist
 api/dist
