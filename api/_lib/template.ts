@@ -72,6 +72,7 @@ function getCss(theme: string, fontSize: string) {
       width: 200px;
       height: 200px;
     }
+    .img[src*="//dl.airtable.com/"],
     .img[src*="//github.com/"] {
       border-radius: 75px;
       width: 150px;
