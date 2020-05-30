@@ -23,7 +23,6 @@ function getCss(theme: string, fontSize: string) {
           format('woff2');
       font-weight: normal;
       font-style: normal;
-      font-display: swap;
     }
     @font-face {
       font-family: 'Phantom Sans';
@@ -33,7 +32,6 @@ function getCss(theme: string, fontSize: string) {
           format('woff2');
       font-weight: bold;
       font-style: normal;
-      font-display: swap;
     }
 
     body {
