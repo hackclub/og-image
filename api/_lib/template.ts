@@ -30,7 +30,7 @@ function getCss(theme: string, fontSize: string) {
 
     body {
       background: ${background};
-      background-image: radial-gradient(circle at 25px 25px, ${radial} 3%, transparent 0%),   
+      background-image: radial-gradient(circle at 25px 25px, ${radial} 3%, transparent 0%),
         radial-gradient(circle at 75px 75px, ${radial} 3%, transparent 0%);
       background-size: 100px 100px;
       height: 100vh;
@@ -112,7 +112,7 @@ function getCss(theme: string, fontSize: string) {
       width: 125px;
       margin: 0 50px;
     }
-    
+
     .heading {
       background-image: linear-gradient(to bottom right, #ff8c37, #ec3750 66%);
       background-repeat: no-repeat;
@@ -134,7 +134,7 @@ function getCss(theme: string, fontSize: string) {
       color: #7a8c97;
       letter-spacing: 0;
     }
-    
+
     .emoji {
       height: 1em;
       width: 1em;
@@ -167,10 +167,10 @@ export function getHtml(parsedReq: ParsedRequest) {
         images.length > 0
           ? `<div class="img-wrapper">
               <img class="img" src="${sanitizeHtml(images[0])}" />
-              ${images.slice(1).map(img => {
-                return `<div class="plus">+</div>
+              ${images.slice(1).map(img =>
+                `<div class="plus">+</div>
                 <img class="img" src="${sanitizeHtml(img)}" />`
-              })}
+              ).join('')}
             </div>`
           : '<div class="spacer"></div>'
       }
