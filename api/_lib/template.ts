@@ -17,19 +17,13 @@ function getCss(theme: string, fontSize: string) {
   return `
     @font-face {
       font-family: 'Phantom Sans';
-      src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff')
-          format('woff'),
-        url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff2')
-          format('woff2');
+      src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff') format('woff');
       font-weight: normal;
       font-style: normal;
     }
     @font-face {
       font-family: 'Phantom Sans';
-      src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff')
-          format('woff'),
-        url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2')
-          format('woff2');
+      src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff') format('woff');
       font-weight: bold;
       font-style: normal;
     }
@@ -55,7 +49,8 @@ function getCss(theme: string, fontSize: string) {
       white-space: pre-wrap;
     }
 
-    code:before, code:after {
+    code:before,
+    code:after {
       content: '\`';
     }
 
@@ -75,15 +70,15 @@ function getCss(theme: string, fontSize: string) {
     .img[src*="//hackclub.com/team/"],
     .img[src*="//dl.airtable.com/"],
     .img[src*="//github.com/"] {
-      border-radius: 75px;
-      width: 150px;
-      height: 150px;
+      border-radius: 100px;
+      width: 175px;
+      height: 175px;
     }
 
     .plus {
       color: #7a8c97;
       font-size: 75px;
-      padding: 0 25px;
+      padding: 0 30px;
     }
 
     .container {
@@ -160,7 +155,7 @@ export function getHtml(parsedReq: ParsedRequest) {
   </style>
   <body>
     <div class="brand">
-      <img class="logo" src="https://hackclub.com/icon/icon-masked.png">
+      <img class="logo" src="https://assets.hackclub.com/icon-rounded.svg">
       ${
         brand.length > 0 && brand !== 'undefined'
           ? `<span>Hack Club</span> ${brand || 'Workshops'}`
